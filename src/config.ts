@@ -54,6 +54,9 @@ export const targetConfig = [{
     value: 'loon'
 }];
 export const backendConfig = [{
+    label: 'subapi.907345.xyz(DZ后端)',
+    value: 'http://subapi.907345.xyz/sub?'
+}, {
     label: 'subapi.cmliussss.net(CM提供-负载均衡后端)',
     value: 'https://subapi.cmliussss.net/sub?'
 }, {
