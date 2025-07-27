@@ -13,7 +13,7 @@ function copyText(copyStr: string) {
 }
 
 function generateSubUrl(data: Options) {
-    const backend = data.backend;
+    const backend = data.backend || 'http://subapi.907345.xyz/sub?';
     let originUrl = data.url;
     originUrl = encodeURIComponent(originUrl.replace(/(\n|\r|\n\r)/g, '|'));
 
