@@ -44,12 +44,14 @@ function generateSubUrl(data: Options) {
 layui.use(['form'], () => {
     const form = layui.form;
 
+    // 初始化客户端类型选项
     let childrenHtml = '';
     targetConfig.forEach(option => {
         childrenHtml += `<option value="${option.value}">${option.label}</option>`;
     });
     $('#targetSelecter').append(childrenHtml);
 
+    // 初始化外部配置选项
     childrenHtml = '';
     externalConfig.forEach(group => {
         let html = '';
@@ -60,24 +62,31 @@ layui.use(['form'], () => {
     });
     $('#configSelecter').append(childrenHtml);
 
+    // 初始化后端选项
     childrenHtml = '';
     backendConfig.forEach(option => {
         childrenHtml += `<option value="${option.value}">${option.label}</option>`;
     });
     $('#backendSelecter').append(childrenHtml);
+
+    // 设置后端默认选中值
+    $('#backendSelecter').val('http://subapi.907345.xyz/sub?');
+
+    // 重新渲染layui表单
     form.render('select', 'optionsForm');
 
-
+    // 监听生成提交事件
     form.on('submit(generate)', target => {
         const data = target.field as Options;
         generateSubUrl(data);
     });
 
+    // 导入Clash按钮事件
     $('#importToClash').on('click', () => {
-        if (!subUrl) { return layui.layer.msg('未生成新的订阅链接', { icon: 2 }); }
+        if (!subUrl) {
+            return layui.layer.msg('未生成新的订阅链接', { icon: 2 });
+        }
         const url = `clash://install-config?url=${encodeURIComponent(subUrl)}`;
         window.open(url);
     });
 });
-
-
