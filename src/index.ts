@@ -28,7 +28,7 @@ function generateSubUrl(data: Options) {
     }
 
     if (data.exclude) {
-        newSubUrl += `&wxclude=${encodeURIComponent(data.exclude)}`;
+        newSubUrl += `&exclude=${encodeURIComponent(data.exclude)}`;
     }
 
     if (data.name) {
